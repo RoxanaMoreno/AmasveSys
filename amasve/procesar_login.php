@@ -35,7 +35,7 @@ if ($attempts >= $max_attempts) {
     $response['error'] = 'Demasiados intentos fallidos. Inténtalo más tarde.';
 } else {
     // Recuperar el usuario rol y hash de la contraseña del usuario de la base de datos
-    $sql = "SELECT id_usuario, rol, contrasena FROM usuarios WHERE nombre_usuario = ?";
+    $sql = "SELECT id_usuario, rol, contrasena, nombre_usuario FROM usuarios WHERE nombre_usuario = ?";
     if ($stmt = mysqli_prepare($conexion, $sql)) {
         mysqli_stmt_bind_param($stmt, "s", $nombre_usuario);
         mysqli_stmt_execute($stmt);
@@ -49,6 +49,8 @@ if ($attempts >= $max_attempts) {
                 session_start();
                 $_SESSION['id_usuario'] = $row['id_usuario'];
                 $_SESSION['rol'] = $row['rol'];
+                // NUEVO Guardar nombre de usuario en la sesión
+                $_SESSION['nombre_usuario'] = $row['nombre_usuario']; 
 
                 $response['credencialesValidas'] = true;
                 $response['rol'] = $row['rol'];
@@ -77,3 +79,4 @@ mysqli_close($conexion);
 
 header('Content-Type: application/json');
 echo json_encode($response);
+?>

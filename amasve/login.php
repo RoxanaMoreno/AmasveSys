@@ -31,11 +31,11 @@
                 case 'administrador':
                   window.location.href = 'dashboard_admin.php';
                   break;
-                case 'voluntario1':
-                  window.location.href = 'dashboard_voluntario1.php';
+                case 'pro':
+                  window.location.href = 'dashboard_pro.php';
                   break;
-                case 'voluntario2':
-                  window.location.href = 'dashboard_voluntario2.php';
+                case 'basic':
+                  window.location.href = 'dashboard_basic.php';
                   break;
               }
             } else {
