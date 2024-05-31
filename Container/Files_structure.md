@@ -24,7 +24,7 @@ amasvesys/
 - **apache**: Carpeta para almacenar los archivos relacionados con el servidor web Apache.
   - **Dockerfile**: Define la configuración para construir la imagen del contenedor Apache.
   - **demo.apache.conf**: Archivo de configuración de ejemplo para Apache.
-- **config**: Carpeta para almacenar archivos de conexión de la base de datos. Aquí se incluirá un usuario con permisos para consultar las tablas relativas a la autenticación de sesiones de usuarios y archivos específicos de conexión para los roles con determinados permisos
+- **config**: Carpeta para almacenar archivos de conexión de la base de datos. Aquí se incluirán archivos de conexion a base de datos del usuario con permisos para consultar las tablas relativas a la autenticación de sesiones de usuarios y archivos específicos de conexión para los roles con determinados permisos.
   - **connectiondb.php**: ejemplo de un archivo de conexion a la base de datos para determinado rol.
 - **docker-compose.yml**: Archivo de configuración de Docker Compose que define los servicios y redes de tu aplicación.
 - **docs**: Carpeta para almacenar los archivos PDF que se mostrarán en tu sitio web.
