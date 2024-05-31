@@ -1,0 +1,54 @@
+version: "3.9"
+
+services:
+  web:
+    build:
+      context: ./amasvesys
+      args:
+        PHP_VERSION: ${PHP_VERSION}
+    networks:
+      - backend
+    volumes:
+      - ./amasvesys:/var/www/html
+      - pdfdata:/var/www/docs
+    container_name: amasvesys-web
+  apache:
+    build:
+      context: ./
+      args:
+        APACHE_VERSION: ${APACHE_VERSION}
+    depends_on:
+      - amasvesys-web
+      - db
+    networks:
+      - frontend
+      - backend
+    ports:
+      - "8080:80"
+    volumes:
+      - ./amasvesys:/var/www/html
+      - pdfdata:/var/www/docs
+    container_name: amasvesys-apache
+  db:
+    image: mysql:5.7
+    restart: always
+    ports:
+      - "3306:3306"
+    volumes:
+      - dbdata:/var/lib/mysql
+    networks:
+      - backend
+    environment:
+      MYSQL_ROOT_PASSWORD: "${DB_ROOT_PASSWORD}"
+      MYSQL_DATABASE: "${DB_NAME}"
+      MYSQL_USER: "${DB_USERNAME}"
+      MYSQL_PASSWORD: "${DB_PASSWORD}"
+    container_name: amasvesys-db
+
+networks:
+  frontend:
+  backend:
+
+volumes:
+  pdfdata:
+  dbdata:
