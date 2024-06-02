@@ -20,9 +20,9 @@ El repositorio está organizado en varias carpetas y archivos clave:
   - **[docker-compose-explanation.md](Container/docker-compose-parts.md)**: Documento que desglosa y explica cada una de las partes del archivo YAML.
 - **[amasve](amasve/)**: Archivos de la aplicación web.
   - **[index.html](amasve/login.php)**: Página principal de la aplicación.
-  - **[styles.css](amasve/css.css)**: Estilos de la aplicación web.
-- **[database](amasve/database/)**: Contiene un archivo SQL para realizar pruebas sobre la base de datos.
-  - **[database.sql](amasve/database/amasve.sql)**: Archivo de base de datos para pruebas.
+  - **[styles.css](amasve/css/style.css)**: Estilos de la aplicación web.
+- **[database](database/)**: Contiene un archivo SQL para realizar pruebas sobre la base de datos y el Modelo Entidad Relación.
+  - **[database](database/amasve.sql)**: Archivo de base de datos para pruebas.
 
 
 
