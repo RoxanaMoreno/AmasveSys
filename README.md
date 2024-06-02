@@ -21,29 +21,10 @@ El repositorio está organizado en varias carpetas y archivos clave:
 - **[amasve](amasve/)**: Archivos de la aplicación web.
   - **[index.html](amasve/index.html)**: Página principal de la aplicación.
   - **[styles.css](amasve/styles.css)**: Estilos de la aplicación web.
-  - **[app.js](amasve/app.js)**: Lógica de la aplicación web.
 - **[database](amasve/database/)**: Contiene un archivo SQL para realizar pruebas sobre la base de datos.
   - **[database.sql](amasve/database/database.sql)**: Archivo de base de datos para pruebas.
 
-## Instalación
 
-1. Clona el repositorio:
-    ```sh
-    git clone https://github.com/RoxanaMoreno/AmasveSys.git
-    ```
-2. Navega al directorio del proyecto:
-    ```sh
-    cd AmasveSys
-    ```
-3. Construye e inicia los contenedores Docker:
-    ```sh
-    docker-compose up --build
-    ```
-
-## Uso
-
-1. Accede a la aplicación web desde tu navegador en `http://localhost`.
-2. Utiliza la estructura de la base de datos incluida para realizar pruebas y desarrollar nuevas funcionalidades.
 
 ## Contribuciones
 
