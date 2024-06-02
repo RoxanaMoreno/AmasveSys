@@ -17,7 +17,7 @@ El repositorio está organizado en varias carpetas y archivos clave:
 - **[README.md](README.md)**: Descripción general del proyecto.
 - **[Container](Container/)**: Contiene archivos relativos a la estructura de archivos y carpetas del dispositivo anfitrión.
   - **[docker-compose.yml](Container/docker-compose.yaml)**: Archivo que define los servicios y contenedores para la aplicación.
-  - **[docker-compose-explanation.md](Container/docker-compose-parts.md)**: Documento que desglosa y explica cada una de las partes del archivo YAML.
+  - **[docker-compose-explanation.md](Container/docker_compose-parts.md)**: Documento que desglosa y explica cada una de las partes del archivo YAML.
 - **[amasve](amasve/)**: Archivos de la aplicación web.
   - **[index.html](amasve/login.php)**: Página principal de la aplicación.
   - **[styles.css](amasve/css/style.css)**: Estilos de la aplicación web.
