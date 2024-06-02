@@ -1,18 +1,65 @@
-# AMASVESYS
+# AmasveSys
 
-## Repositorio complementario del proyecto de fin de curso Amasvesys de Roxana Moreno Rondon
+## Descripción
 
-Este repositorio se ha creado con el fin de servir de anexos o complemento al proyecto de fin de grado de el grado superior de Administracion de sistemas informáticos y redes (ASIR) de la alimna Roxana Moreno Rondon.
+AmasveSys es un sistema desarrollado como parte del proyecto final de Roxana Moreno Rondon para su Título Técnico Superior en Administración de Sistemas Informáticos y Redes. Este proyecto tiene como objetivo demostrar competencias en la administración de sistemas y gestión de redes a través de una implementación práctica y funcional. AmasveSys ofrece una estructura sólida para la gestión y despliegue de aplicaciones utilizando contenedores Docker, facilitando la creación, mantenimiento y escalabilidad de entornos de desarrollo y producción.
 
-El proyecto trata sobre Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo magnam odio aut suscipit velit aliquid animi, vero, voluptate, optio veniam voluptatibus fugit perferendis exercitationem maiores rerum laudantium delectus! Tempora, voluptatum!
+## Características
 
-## Contenido del repositorio
+- **Estructura de contenedores Docker**: Facilita la implementación y gestión de la aplicación.
+- **Aplicación web**: Incluye todos los archivos necesarios para el funcionamiento del sistema.
+- **Base de datos preliminar**: Proporciona una estructura inicial para pruebas y desarrollo.
 
-- Archivo readme.md : contiene una descripcion general del proyecto
-- Carpeta containers : contiene archivos que describen la estructura general de la implementacion del proyecto sobre contenedores de docker etc etc etc.
-- Carpeta amasve : contiene los archivos de la aplicación web
-- Carpeta database: contiene la estructura preliminar de la base de datos utilizada para las pruebas del proyecto
+## Contenido
 
-[archivo docker_compose.yaml](https://github.com/RoxanaMoreno/AmasveSys/blob/main/Container/docker-compose.yaml)
+El repositorio está organizado en varias carpetas y archivos clave:
 
-[Carpeta containers](https://github.com/RoxanaMoreno/AmasveSys/tree/main/Container)
+- **[README.md](README.md)**: Descripción general del proyecto.
+- **[containers](containers/)**: Archivos de configuración e implementación de contenedores Docker.
+- **[amasve](amasve/)**: Archivos de la aplicación web.
+  - **[index.html](amasve/index.html)**: Página principal de la aplicación.
+  - **[styles.css](amasve/styles.css)**: Estilos de la aplicación web.
+  - **[app.js](amasve/app.js)**: Lógica de la aplicación web.
+- **[database](database/)**: Estructura preliminar de la base de datos para pruebas del proyecto.
+  - **[schema.sql](database/schema.sql)**: Esquema de la base de datos.
+  - **[data.sql](database/data.sql)**: Datos de prueba para la base de datos.
+- **[docker-compose.yml](docker-compose.yml)**: Archivo de configuración de Docker Compose para orquestar los contenedores.
+
+## Instalación
+
+1. Clona el repositorio:
+    ```sh
+    git clone https://github.com/RoxanaMoreno/AmasveSys.git
+    ```
+2. Navega al directorio del proyecto:
+    ```sh
+    cd AmasveSys
+    ```
+3. Construye e inicia los contenedores Docker:
+    ```sh
+    docker-compose up --build
+    ```
+
+## Uso
+
+1. Accede a la aplicación web desde tu navegador en `http://localhost`.
+2. Utiliza la estructura de la base de datos incluida para realizar pruebas y desarrollar nuevas funcionalidades.
+
+## Contribuciones
+
+¡Las contribuciones son bienvenidas! Para contribuir, sigue estos pasos:
+
+1. Haz un fork del proyecto.
+2. Crea una nueva rama para tu función (`git checkout -b feature/nueva-funcion`).
+3. Realiza tus cambios y haz commit (`git commit -m 'Añadir nueva función'`).
+4. Haz push a la rama (`git push origin feature/nueva-funcion`).
+5. Abre un Pull Request.
+
+## Licencia
+
+Este proyecto está bajo la licencia MIT. Consulta el archivo [LICENSE](LICENSE) para más detalles.
+
+## Contacto
+
+Roxana Moreno Rondon - [morenorandre@gmail.com]
+
