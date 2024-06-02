@@ -15,15 +15,15 @@ AmasveSys es un sistema desarrollado como parte del proyecto final de Roxana Mor
 El repositorio está organizado en varias carpetas y archivos clave:
 
 - **[README.md](README.md)**: Descripción general del proyecto.
-- **[containers](containers/)**: Archivos de configuración e implementación de contenedores Docker.
+- **[containers](containers/)**: Contiene archivos relativos a la estructura de archivos y carpetas del dispositivo anfitrión.
+  - **[docker-compose.yml](containers/docker-compose.yml)**: Archivo que define los servicios y contenedores para la aplicación.
+  - **[docker-compose-explanation.md](containers/docker-compose-explanation.md)**: Documento que desglosa y explica cada una de las partes del archivo YAML.
 - **[amasve](amasve/)**: Archivos de la aplicación web.
   - **[index.html](amasve/index.html)**: Página principal de la aplicación.
   - **[styles.css](amasve/styles.css)**: Estilos de la aplicación web.
   - **[app.js](amasve/app.js)**: Lógica de la aplicación web.
-- **[database](database/)**: Estructura preliminar de la base de datos para pruebas del proyecto.
-  - **[schema.sql](database/schema.sql)**: Esquema de la base de datos.
-  - **[data.sql](database/data.sql)**: Datos de prueba para la base de datos.
-- **[docker-compose.yml](docker-compose.yml)**: Archivo de configuración de Docker Compose para orquestar los contenedores.
+- **[database](amasve/database/)**: Contiene un archivo SQL para realizar pruebas sobre la base de datos.
+  - **[database.sql](amasve/database/database.sql)**: Archivo de base de datos para pruebas.
 
 ## Instalación
 
@@ -62,4 +62,3 @@ Este proyecto está bajo la licencia MIT. Consulta el archivo [LICENSE](LICENSE)
 ## Contacto
 
 Roxana Moreno Rondon - [morenorandre@gmail.com]
-
