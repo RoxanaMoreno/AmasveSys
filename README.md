@@ -15,9 +15,9 @@ AmasveSys es un sistema desarrollado como parte del proyecto final de Roxana Mor
 El repositorio está organizado en varias carpetas y archivos clave:
 
 - **[README.md](README.md)**: Descripción general del proyecto.
-- **[Containers](Container/)**: Contiene archivos relativos a la estructura de archivos y carpetas del dispositivo anfitrión.
-  - **[docker-compose.yml](containers/docker-compose.yml)**: Archivo que define los servicios y contenedores para la aplicación.
-  - **[docker-compose-explanation.md](containers/docker-compose-explanation.md)**: Documento que desglosa y explica cada una de las partes del archivo YAML.
+- **[Container](Container/)**: Contiene archivos relativos a la estructura de archivos y carpetas del dispositivo anfitrión.
+  - **[docker-compose.yml](Container/docker-compose.yml)**: Archivo que define los servicios y contenedores para la aplicación.
+  - **[docker-compose-explanation.md](Container/docker-compose-explanation.md)**: Documento que desglosa y explica cada una de las partes del archivo YAML.
 - **[amasve](amasve/)**: Archivos de la aplicación web.
   - **[index.html](amasve/index.html)**: Página principal de la aplicación.
   - **[styles.css](amasve/styles.css)**: Estilos de la aplicación web.
