@@ -1,8 +1,7 @@
 # Explicación de las partes del archivo docker_compose.yaml del servicio amasvesys
 
 - **Versión**
-version: "3.9"
-Descripción: Especifica la versión de Docker Compose que se está utilizando. La versión 3.9 es una de las versiones más recientes y soporta una amplia gama de características.
+version: "3.9" Especifica la versión de Docker Compose que se está utilizando. 
 
 - **Servicios**
 Los servicios son contenedores que se ejecutan como parte de la aplicación Docker Compose. En este archivo hay tres servicios: web, apache, y db.
