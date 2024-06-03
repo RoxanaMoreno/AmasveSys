@@ -23,9 +23,9 @@ El repositorio está organizado en varias carpetas y archivos clave:
 - **[Container](Container/)**: Contiene archivos relativos a la estructura de archivos y carpetas del dispositivo anfitrión.
   - **[docker-compose.yml](Container/docker-compose.yaml)**: Archivo que define los servicios y contenedores para la aplicación.
   - **[docker-compose-explanation.md](Container/docker_compose-parts.md)**: Documento que desglosa y explica cada una de las partes del archivo YAML.
-- **[amasve](amasve/)**: Archivos de la aplicación web.
-  - **[index.html](amasve/login.php)**: Página principal de la aplicación.
-  - **[styles.css](amasve/css/style.css)**: Estilos de la aplicación web.
+- **[web](web/)**: Archivos de la aplicación web, en la que destacan:
+  - **[index.html](web/index.php)**: Página principal de la aplicación.
+  - **[styles.css](web/recursos/css/style.css)**: Estilos de la aplicación web.
 - **[database](database/)**: Contiene un archivo SQL [database](database/amasve.sql) para realizar pruebas sobre la base de datos y el Modelo Entidad Relación en [texto](database/MER_AMASVE.md) e [imagen](https://www.mermaidchart.com/raw/9821516f-03fe-487c-a817-609c16071892?theme=light&version=v0.1&format=svg).
 
 
