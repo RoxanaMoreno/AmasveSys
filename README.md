@@ -2,7 +2,12 @@
 
 ## Descripción
 
-AmasveSys es un sistema desarrollado como parte del proyecto final de Roxana Moreno Rondon para su Título Técnico Superior en Administración de Sistemas Informáticos y Redes. Este proyecto tiene como objetivo demostrar competencias en la administración de sistemas y gestión de redes a través de una implementación práctica y funcional. AmasveSys ofrece una estructura sólida para la gestión y despliegue de aplicaciones utilizando contenedores Docker, facilitando la creación, mantenimiento y escalabilidad de entornos de desarrollo y producción.
+AmasveSys es un sistema integral de gestión desarrollado específicamente para la Asociación AMASVE como parte del proyecto final en el marco de la Formación Profesional Superior en Administración de Sistemas Informáticos en Red. El objetivo principal de este proyecto es digitalizar y optimizar los procesos administrativos, mejorando así la eficiencia operativa y el uso eficiente de los recursos disponibles.
+
+El sistema se ha construido utilizando tecnologías como MySQL y PHP, lo que permite ofrecer una interfaz web modular, escalable y fácil de usar. Al migrar de procesos manuales a digitales, AmasveSys reduce significativamente el uso de recursos físicos y el tiempo dedicado a la gestión de datos. Además, garantiza un acceso preciso y en tiempo real a la información, lo que respalda la misión de AMASVE de asistir a grupos vulnerables.
+
+En términos de competencias en administración de sistemas y gestión de redes, AmasveSys demuestra una implementación práctica y funcional. Su estructura sólida facilita la gestión y el despliegue de aplicaciones mediante contenedores Docker, lo que simplifica la creación, el mantenimiento y la escalabilidad de entornos tanto de desarrollo como de producción.
+
 
 ## Características
 
