@@ -2,7 +2,7 @@
 session_start();
 
 if (!isset($_SESSION['id_usuario']) || $_SESSION['rol'] != 'administrador') {
-    header('Location: index.php');
+    header('Location: login.php');
     exit;
 }
 // Obtener el nombre del usuario de la sesión
@@ -15,61 +15,87 @@ $nombre_usuario = $_SESSION['nombre_usuario'];
 <head>
     <meta charset="UTF-8">
     <title>Dashboard Administrador</title>
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="../recursos/css/style.css">
-    <style>
-        body {
-            background-color: lightblue;
-        }
-    </style>
-    <script>
-        function loadContent(page) {
-            const xhr = new XMLHttpRequest();
-            xhr.open('GET', page, true);
-            xhr.onload = function() {
-                if (xhr.status === 200) {
-                    document.getElementById('content').innerHTML = xhr.responseText;
-                    attachFormSubmitEvent();
-                } else {
-                    document.getElementById('content').innerHTML = '<p>Error al cargar el contenido.</p>';
-                }
-            };
-            xhr.send();
-        }
 
-        function confirmDelete(url) {
-            if (confirm('¿Estás seguro de que deseas eliminar este voluntario?')) {
-                loadContent(url);
+<script>
+    function loadContent(page) {
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET', page, true);
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                document.getElementById('content').innerHTML = xhr.responseText;
+                attachFormSubmitEvent();
+            } else {
+                document.getElementById('content').innerHTML = '<p>Error al cargar el contenido.</p>';
             }
-        }
+        };
+        xhr.send();
+    }
 
-        function attachFormSubmitEvent() {
-            const forms = document.querySelectorAll('#content form');
-            forms.forEach(form => {
-                form.addEventListener('submit', function(event) {
-                    event.preventDefault();
-                    const formData = new FormData(this);
-                    const url = this.id === 'addVoluntarioForm' ? 'add_voluntario.php' : 'edit_voluntario.php';
-                    const xhr = new XMLHttpRequest();
-                    xhr.open('POST', url, true);
-                    xhr.onload = function() {
-                        if (xhr.status === 200) {
-                            document.getElementById('content').innerHTML = xhr.responseText;
-                            attachFormSubmitEvent();
-                        } else {
-                            document.getElementById('content').innerHTML = '<p>Error al cargar el contenido.</p>';
-                        }
-                    };
-                    xhr.send(formData);
-                });
+    function confirmDelete(url) {
+        if (confirm('¿Estás seguro de que deseas eliminar este voluntario?')) {
+            loadContent(url);
+        }
+    }
+
+    function attachFormSubmitEvent() {
+        const forms = document.querySelectorAll('#content form');
+        forms.forEach(form => {
+            form.addEventListener('submit', function(event) {
+                event.preventDefault();
+                const formData = new FormData(this);
+                let url = '';
+                if (this.id === 'searchForm') {
+                    url = 'voluntarios.php';
+                } else if (this.id === 'addVoluntarioForm') {
+                    url = 'add_voluntario.php';
+                } else {
+                    url = 'edit_voluntario.php';
+                }
+                const xhr = new XMLHttpRequest();
+                xhr.open('POST', url, true);
+                xhr.onload = function() {
+                    if (xhr.status === 200) {
+                        document.getElementById('content').innerHTML = xhr.responseText;
+                        attachFormSubmitEvent();
+                    } else {
+                        document.getElementById('content').innerHTML = '<p>Error al cargar el contenido.</p>';
+                    }
+                };
+                xhr.send(formData);
+            });
+        });
+
+        const searchForm = document.getElementById('searchForm');
+        if (searchForm) {
+            searchForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+                const formData = new FormData(this);
+                const xhr = new XMLHttpRequest();
+                xhr.open('POST', 'voluntarios.php', true);
+                xhr.onload = function() {
+                    if (xhr.status === 200) {
+                        document.getElementById('content').innerHTML = xhr.responseText;
+                        attachFormSubmitEvent();
+                    } else {
+                        document.getElementById('content').innerHTML = '<p>Error al cargar el contenido.</p>';
+                    }
+                };
+                xhr.send(formData);
             });
         }
+    }
 
-        document.addEventListener('DOMContentLoaded', function() {
-            attachFormSubmitEvent();
-        });
-    </script>
+    document.addEventListener('DOMContentLoaded', function() {
+        attachFormSubmitEvent();
+    });
+</script>
 
+
+
+ 
 </head>
 
 <body>
@@ -99,7 +125,7 @@ $nombre_usuario = $_SESSION['nombre_usuario'];
                         <a class="nav-link" href="#" onclick="loadContent('entregas.php')">Entregas</a>
                     </li>
                 </ul>
-                <p class="me-5"><?php echo htmlspecialchars($nombre_usuario); ?></p>
+                <p class="me-5"><?php echo 'Ususario activo: '.htmlspecialchars($nombre_usuario); ?></p>
                 <a class="btn btn-outline-danger ml-2" href="../lib/cerrar_sesion.php">Cerrar sesión</a>
             </div>
         </div>

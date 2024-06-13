@@ -10,6 +10,31 @@
     height: calc(100% - 73px);
 }
 
+
+
+body {
+    background-color: lightblue;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-link {
+    color: black !important; /* Cambia el color de los enlaces en la barra de navegación */
+    font-size: x-large;
+    font-weight: lighter;
+}
+
+.container {
+    padding-top: 20px;
+}
+
+/* Ajustar contenedor del contenido */
+#content {
+    background-color: lightblue; /* Fondo blanco para el contenido */
+    border-radius: 8px; /* Esquinas redondeadas */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
 @media (max-width: 450px) {
     .h-custom {
         height: 100%;
