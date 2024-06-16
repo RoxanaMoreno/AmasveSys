@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-06-2024 a las 00:38:09
+-- Tiempo de generación: 16-06-2024 a las 23:26:28
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.0.30
 
@@ -22,6 +22,32 @@ SET time_zone = "+00:00";
 --
 CREATE DATABASE IF NOT EXISTS `amasve` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 USE `amasve`;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `aportaciones`
+--
+
+CREATE TABLE `aportaciones` (
+  `id` int(11) NOT NULL,
+  `monto` decimal(10,2) NOT NULL,
+  `fecha` date NOT NULL,
+  `descripcion` text DEFAULT NULL,
+  `socio_numero` int(11) NOT NULL,
+  `id_recibo` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `aportaciones`
+--
+
+INSERT INTO `aportaciones` (`id`, `monto`, `fecha`, `descripcion`, `socio_numero`, `id_recibo`) VALUES
+(1, 50.00, '2024-06-14', 'cuota junio 2024', 4567, 2),
+(2, 50.00, '2024-06-14', 'cuota enero', 4567, 3),
+(3, 50.00, '2024-06-14', 'cuota febrero', 4567, 4),
+(4, 500.00, '2024-06-26', 'cuota marzo', 4567, 1),
+(5, 50.00, '2024-06-14', 'cuota abril', 4567, 5);
 
 -- --------------------------------------------------------
 
@@ -82,6 +108,15 @@ CREATE TABLE `beneficiarios_eventos` (
   `evento_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Volcado de datos para la tabla `beneficiarios_eventos`
+--
+
+INSERT INTO `beneficiarios_eventos` (`beneficiario_id`, `evento_id`) VALUES
+(2345, 6),
+(3456, 6),
+(7890, 6);
+
 -- --------------------------------------------------------
 
 --
@@ -95,6 +130,13 @@ CREATE TABLE `documentos` (
   `fecha_subida` date NOT NULL,
   `beneficiario_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `documentos`
+--
+
+INSERT INTO `documentos` (`id`, `ruta_documento`, `tipo_documento`, `fecha_subida`, `beneficiario_id`) VALUES
+(1, '../documentos/666f551e5fc86_nie-nuevo.jpg', 'nie', '2024-06-16', 4567);
 
 -- --------------------------------------------------------
 
@@ -115,16 +157,9 @@ CREATE TABLE `entregas` (
 --
 
 INSERT INTO `entregas` (`id`, `fecha_entrega`, `descripcion`, `usuario_id`, `beneficiario_id`) VALUES
-(1, '2023-01-15', 'Entrega de alimentos y ropa 1', 70, 1234),
-(2, '2023-02-20', 'Entrega de alimentos y ropa 2', 64, 2345),
-(3, '2023-03-10', 'Entrega de alimentos y ropa 3', 70, 3456),
-(4, '2023-04-18', 'Entrega de alimentos y ropa 4', 64, 4567),
-(5, '2023-05-25', 'Entrega de alimentos y ropa 5', 70, 5678),
-(6, '2023-06-30', 'Entrega de alimentos y ropa 6', 70, 6789),
-(7, '2023-07-15', 'Entrega de alimentos y ropa 7', 64, 7890),
-(8, '2023-08-20', 'Entrega de alimentos y ropa 8', 70, 8901),
-(9, '2023-09-25', 'Entrega de alimentos y ropa 9', 64, 9012),
-(10, '2023-10-30', 'Entrega de alimentos y ropa 10', 64, 1023);
+(13, '2024-06-16', 'Alimentos frescos y no perecederos junio', 1, 4567),
+(14, '2024-06-16', 'alimentos frescos junio', 1, 7890),
+(16, '2024-06-16', 'Ropa bebe y pañales', 1, 6789);
 
 -- --------------------------------------------------------
 
@@ -148,9 +183,11 @@ CREATE TABLE `eventos` (
 INSERT INTO `eventos` (`id`, `nombre`, `descripcion`, `fecha`, `lugar`, `organizador_id`) VALUES
 (1, 'Concierto de Rock', 'Un concierto de rock con bandas locales.', '2024-07-15', 'Multiespacio Rabasa', 77),
 (2, 'Feria de la Ciencia', 'Una feria para mostrar proyectos científicos de estudiantes.', '2024-08-20', 'Centro de Convenciones', 64),
-(3, 'Maratón Benéfico', 'Una maratón para recaudar fondos para causas benéficas.', '2024-09-10', 'Monte Tossal', 79),
 (4, 'Festival de Comida', 'Festival con comidas típicas de la región.', '2024-10-05', 'Plaza Séneca', 77),
-(5, 'Taller de Tecnología', 'Taller sobre las últimas tendencias en tecnología.', '2024-11-12', 'Centro 14', 64);
+(6, 'Galería', 'Exposición  fotos', '2024-06-13', 'Cigarrreras', 64),
+(7, 'Feria Artesana', 'Artesanía hispanoamericana', '2024-07-07', 'Centro cultural AMASVE', 64),
+(11, 'Desfile', 'Desfile Internacional de Hogueras', '2024-06-23', 'Alfonso el Sabio', 64),
+(15, 'Cine', 'Proyección de documentales', '2024-07-01', 'Centro cultural calle Sargento Vaillo', 78);
 
 -- --------------------------------------------------------
 
@@ -164,6 +201,30 @@ CREATE TABLE `login_attempts` (
   `ip_address` varchar(45) DEFAULT NULL,
   `attempt_time` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `recibos`
+--
+
+CREATE TABLE `recibos` (
+  `id` int(11) NOT NULL,
+  `fecha` date NOT NULL,
+  `monto` decimal(10,2) NOT NULL,
+  `detalles` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `recibos`
+--
+
+INSERT INTO `recibos` (`id`, `fecha`, `monto`, `detalles`) VALUES
+(1, '2024-06-26', 500.00, 'cuota marzo'),
+(2, '2024-06-14', 50.00, 'cuota junio 2024'),
+(3, '2024-06-14', 50.00, 'cuota enero'),
+(4, '2024-06-14', 50.00, 'cuota febrero'),
+(5, '2024-06-14', 50.00, 'cuota abril');
 
 -- --------------------------------------------------------
 
@@ -191,7 +252,7 @@ INSERT INTO `socios` (`socio_numero`, `nombres`, `apellidos`, `documento_identid
 (1234, 'Juan', 'García', 'X1234567A', 'juan.garcia@example.com', '612345678', 1, 'ES9121000418450200051332', '2022-01-15'),
 (2345, 'María', 'López', 'Y2345678B', 'maria.lopez@example.com', '622345678', 0, 'ES4512345678901234567890', '2023-02-20'),
 (3456, 'Pedro', 'Martínez', 'Z3456789C', 'pedro.martinez@example.com', '632345678', 1, 'ES5501820432041234567890', '2021-03-10'),
-(4567, 'Ana', 'Sánchez', 'A4567890D', 'ana.sanchez@example.com', '642345678', 0, 'ES2100751230987654321098', '2020-04-18'),
+(4567, 'Ana Mercedes ', 'Sánchez Rodríguez ', 'A4567890D', 'ana.sanchez@example.com', '642345678', 0, 'ES21007512309876543210984', '2020-04-18'),
 (5678, 'Luis', 'Fernández', 'B5678901E', 'luis.fernandez@example.com', '652345678', 1, 'ES1200987654321098765432', '2019-05-25'),
 (6789, 'Carmen', 'Gómez', 'C6789012F', 'carmen.gomez@example.com', '662345678', 0, 'ES2309876543210987654321', '2018-06-30');
 
@@ -286,20 +347,19 @@ CREATE TABLE `voluntarios` (
 --
 
 INSERT INTO `voluntarios` (`id`, `numero_identificacion`, `nombres`, `apellidos`, `telefono`, `email`, `localidad`) VALUES
-(64, '12345678A', 'Roxana', 'Moreno Rondón', '612345678', 'roxana.moreno@example.com', 'Alicante'),
+(64, '12345678A', 'Roxana', 'Moreno Rondón', '612345678', 'roxana.moreno@example.com', 'Alicante centro'),
 (65, '23456789B', 'Juan Carlos', 'López García', '622345679', 'juan.carlos@example.com', 'Elche'),
 (66, '34567890C', 'María', 'Fernández Martínez', '632345680', 'maria.fernandez@example.com', 'Benidorm'),
-(68, '56789012E', 'Luis', 'Sánchez Pérez', '652345682', 'luis.sanchez@example.com', 'Orihuela'),
-(69, '67890123F', 'José', 'Martínez López', '662345683', 'jose.martinez@example.com', 'Alcoy'),
-(70, '78901234G', 'Laura', 'Hernández González', '672345684', 'laura.hernandez@example.com', 'Elda'),
-(71, '89012345H', 'Carmen', 'López García', '682345685', 'carmen.lopez@example.com', 'San Vicente del RAAAAAAAAA'),
-(73, '01234567J', 'Lucía', 'Pérez Fernández', '702345687', 'lucia.perez@example.com', 'DeniaAAAAA'),
+(69, '67890123F', 'José A', 'Martínez López', '662345683', 'jose.martinez@example.com', 'Alcoy'),
+(70, '78901234G', 'Laura', 'Hernández González', '672345684', 'laura.hernandez@example.com', 'Novelda'),
+(71, '89012345H', 'Carmen', 'López García', '682345685', 'carmen.lopez@example.com', 'San Vicente'),
+(73, '01234567J', 'Lucía', 'Pérez Fernández', '702345687', 'lucia.perez@example.com', 'Denia'),
 (74, '11234568K', 'Miguel', 'García Rodríguez', '712345688', 'miguel.garcia@example.com', 'Petrer'),
-(75, '21234569L', 'Elena', 'Martínez Sánchez', '722345689', 'elena.martinez@example.com', 'Santa Pola'),
+(75, '21234569L', 'Elena Beatriz', 'Martínez Sánchez', '722345689', 'elena.martinez@example.com', 'Santa Pola'),
 (77, '41234571N', 'Raúl', 'García López', '742345691', 'raul.garcia@example.com', 'Crevillente'),
-(78, '51234572O', 'Sofía', 'Rodríguez González', '752345692', 'sofia.rodriguez@example.com', 'BenissaAAAA'),
+(78, '51234572O', 'Sofía', 'Rodríguez González', '752345692', 'sofia.rodriguez@example.com', 'Benissa'),
 (79, '87693608T', 'Prueba', 'Mayúsculas', '654372819', 'prueba@g.com', 'Alicante'),
-(83, '4429547L', 'Prueba', 'Asdfghjk', '123456789', 'd@g.v', 'asdfghjk');
+(110, 'Y4627759N', 'Roxana Andreina', 'Moreno Rondon', '654172308', 'moren@gmail.com', 'Alicante');
 
 -- --------------------------------------------------------
 
@@ -311,6 +371,17 @@ CREATE TABLE `voluntarios_eventos` (
   `voluntario_id` int(11) NOT NULL,
   `evento_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `voluntarios_eventos`
+--
+
+INSERT INTO `voluntarios_eventos` (`voluntario_id`, `evento_id`) VALUES
+(69, 6),
+(70, 6),
+(73, 6),
+(78, 6),
+(110, 6);
 
 -- --------------------------------------------------------
 
@@ -344,6 +415,14 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 
 --
+-- Indices de la tabla `aportaciones`
+--
+ALTER TABLE `aportaciones`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `socio_numero` (`socio_numero`),
+  ADD KEY `fk_aportaciones_recibos` (`id_recibo`);
+
+--
 -- Indices de la tabla `beneficiarios`
 --
 ALTER TABLE `beneficiarios`
@@ -368,20 +447,26 @@ ALTER TABLE `documentos`
 --
 ALTER TABLE `entregas`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `usuario_id` (`usuario_id`),
-  ADD KEY `beneficiario_id` (`beneficiario_id`);
+  ADD KEY `beneficiario_id` (`beneficiario_id`),
+  ADD KEY `fk_usuario_id` (`usuario_id`);
 
 --
 -- Indices de la tabla `eventos`
 --
 ALTER TABLE `eventos`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `organizador_id` (`organizador_id`);
+  ADD KEY `fk_organizador_id` (`organizador_id`);
 
 --
 -- Indices de la tabla `login_attempts`
 --
 ALTER TABLE `login_attempts`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `recibos`
+--
+ALTER TABLE `recibos`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -411,35 +496,41 @@ ALTER TABLE `voluntarios`
 --
 ALTER TABLE `voluntarios_eventos`
   ADD PRIMARY KEY (`voluntario_id`,`evento_id`),
-  ADD KEY `evento_id` (`evento_id`);
+  ADD KEY `FK_evento_id` (`evento_id`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
 --
+-- AUTO_INCREMENT de la tabla `aportaciones`
+--
+ALTER TABLE `aportaciones`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT de la tabla `beneficiarios`
 --
 ALTER TABLE `beneficiarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9013;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9014;
 
 --
 -- AUTO_INCREMENT de la tabla `documentos`
 --
 ALTER TABLE `documentos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `entregas`
 --
 ALTER TABLE `entregas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT de la tabla `eventos`
 --
 ALTER TABLE `eventos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de la tabla `login_attempts`
@@ -448,10 +539,16 @@ ALTER TABLE `login_attempts`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
+-- AUTO_INCREMENT de la tabla `recibos`
+--
+ALTER TABLE `recibos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT de la tabla `socios`
 --
 ALTER TABLE `socios`
-  MODIFY `socio_numero` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6790;
+  MODIFY `socio_numero` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6797;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
@@ -463,11 +560,18 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `voluntarios`
 --
 ALTER TABLE `voluntarios`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=86;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=112;
 
 --
 -- Restricciones para tablas volcadas
 --
+
+--
+-- Filtros para la tabla `aportaciones`
+--
+ALTER TABLE `aportaciones`
+  ADD CONSTRAINT `aportaciones_ibfk_1` FOREIGN KEY (`socio_numero`) REFERENCES `socios` (`socio_numero`) ON DELETE CASCADE,
+  ADD CONSTRAINT `fk_aportaciones_recibos` FOREIGN KEY (`id_recibo`) REFERENCES `recibos` (`id`) ON DELETE CASCADE;
 
 --
 -- Filtros para la tabla `beneficiarios_eventos`
@@ -486,19 +590,21 @@ ALTER TABLE `documentos`
 -- Filtros para la tabla `entregas`
 --
 ALTER TABLE `entregas`
-  ADD CONSTRAINT `entregas_ibfk_1` FOREIGN KEY (`usuario_id`) REFERENCES `voluntarios` (`id`),
-  ADD CONSTRAINT `entregas_ibfk_2` FOREIGN KEY (`beneficiario_id`) REFERENCES `beneficiarios` (`id`);
+  ADD CONSTRAINT `entregas_ibfk_2` FOREIGN KEY (`beneficiario_id`) REFERENCES `beneficiarios` (`id`),
+  ADD CONSTRAINT `fk_usuario_id` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios` (`id_usuario`);
 
 --
 -- Filtros para la tabla `eventos`
 --
 ALTER TABLE `eventos`
-  ADD CONSTRAINT `eventos_ibfk_1` FOREIGN KEY (`organizador_id`) REFERENCES `voluntarios` (`id`);
+  ADD CONSTRAINT `fk_organizador_id` FOREIGN KEY (`organizador_id`) REFERENCES `voluntarios` (`id`) ON DELETE CASCADE;
 
 --
 -- Filtros para la tabla `voluntarios_eventos`
 --
 ALTER TABLE `voluntarios_eventos`
+  ADD CONSTRAINT `FK_evento_id` FOREIGN KEY (`evento_id`) REFERENCES `eventos` (`id`),
+  ADD CONSTRAINT `FK_voluntario_id` FOREIGN KEY (`voluntario_id`) REFERENCES `voluntarios` (`id`),
   ADD CONSTRAINT `voluntarios_eventos_ibfk_1` FOREIGN KEY (`voluntario_id`) REFERENCES `voluntarios` (`id`),
   ADD CONSTRAINT `voluntarios_eventos_ibfk_2` FOREIGN KEY (`evento_id`) REFERENCES `eventos` (`id`);
 COMMIT;
