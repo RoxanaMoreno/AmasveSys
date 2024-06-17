@@ -23,9 +23,9 @@ El repositorio está organizado en varias carpetas y archivos clave:
 - **[Container](Container/)**: Contiene archivos relativos a la estructura de archivos y carpetas del dispositivo anfitrión.
   - **[docker-compose.yml](Container/docker-compose.yaml)**: Archivo que define los servicios y contenedores para la aplicación.
   - **[docker-compose-explanation.md](Container/docker_compose-parts.md)**: Documento que desglosa y explica cada una de las partes del archivo YAML.
-- **[web](web/)**: Archivos de la aplicación web, en la que destacan:
-  - **[index.html](web/index.php)**: Página principal de la aplicación.
-  - **[style.css](web/recursos/css/style.css)**: Estilos de la aplicación web.
+- **[web](WEB_2.0/)**: Archivos de la aplicación web, en la que destacan:
+  - **[index.html](WEB_2.0/index.php)**: Página principal de la aplicación.
+  - **[style.css](WEB_2.0/recursos/css/style.css)**: Estilos de la aplicación web.
 - **[database](database/)**: Contiene una base de datos de pruebas, el Modelo Entidad Relación en [texto](database/MER_AMASVE.md) e [imagen](https://www.mermaidchart.com/raw/9821516f-03fe-487c-a817-609c16071892?theme=light&version=v0.1&format=svg) y un archivo donde se explica la creación de usuarios y asignación de roles en la base de datos en la implementación de la aplicación.
 
 
