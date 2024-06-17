@@ -39,7 +39,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </div>
 
             <button type="submit" class="btn btn-primary">Añadir</button>
-            <button type="button" class="btn btn-secondary" onclick="window.history.back();">Cancelar</button>
         </form>
     </div>
 
